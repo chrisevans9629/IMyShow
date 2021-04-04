@@ -21,6 +21,7 @@ namespace IMyShow.ViewModels
         public string Summary { get; internal set; }
         public IEnumerable<string> Categories { get; internal set; }
         public DateTime Date { get; internal set; }
+        public string ImageUrl { get; set; }
     }
 
     public class RssFeed
@@ -42,12 +43,14 @@ namespace IMyShow.ViewModels
                 String subject = item.Title.Text;
                 
                 String summary = item.Summary.Text;
+                
                 Items.Add(new RssItem
                 {
                     Title = item.Title.Text,
                     Summary = item.Title.Text,
                     Categories = item.Categories.Select(p => p.Name),
                     Date = item.PublishDate.LocalDateTime,
+                    //ImageUrl = 
                 });
             }
         }

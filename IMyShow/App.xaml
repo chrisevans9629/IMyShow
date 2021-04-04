@@ -13,6 +13,7 @@
             <Color x:Key="BackgroundColor">#302f2f</Color>
             <Color x:Key="BackgroundAccentColor">#323639</Color>
             <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="Cascadia Code"/>
                 <Setter Property="TextColor" Value="{StaticResource TextColor}"></Setter>
                 <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}"/>
                 <Setter Property="BorderColor" Value="{StaticResource Accent}"/>
@@ -37,6 +38,8 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}"/>
             </Style>
             <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Cascadia Code"/>
+
                 <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
                 <Setter Property="LineBreakMode" Value="WordWrap"/>
             </Style>
