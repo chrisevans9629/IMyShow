@@ -35,6 +35,18 @@
                    HorizontalOptions="Center"
                    Text="{Binding Prompts.CurrentText}"
                    />
+
+            <Button
+                ImageSource="https://chrisevans9629.github.io/assets/images/github.png"
+                Text="Follow @chrisevans9629"
+                Command="{Binding OpenWebCommand}"
+                CommandParameter="https://github.com/chrisevans9629"
+                />
+            
+            <ImageButton
+                WidthRequest="50"
+                HeightRequest="50"
+                Source=""/>
         </StackLayout>
         
 

@@ -13,6 +13,16 @@ namespace IMyShow.Views
         public AboutPage()
         {
             InitializeComponent();
+            profileImage.Opacity = 0;
+
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            profileImage.FadeTo(1);
         }
     }
 }
