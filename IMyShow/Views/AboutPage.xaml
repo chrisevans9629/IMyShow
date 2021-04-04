@@ -23,6 +23,7 @@
                HorizontalOptions="Center"
                HeightRequest="200"
                WidthRequest="200"
+               x:Name="profileImage"
                />
             <Label Text="Chris Evans"
                    FontSize="Large"
@@ -30,6 +31,10 @@
             <Label Text="Full stack developer, gamer, and more"
                    FontSize="Medium"
                    HorizontalOptions="Center"/>
+            <Label x:Name="captionLabel" 
+                   HorizontalOptions="Center"
+                   Text="{Binding Prompts.CurrentText}"
+                   />
         </StackLayout>
         
 
