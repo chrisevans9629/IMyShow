@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:IMyShow.ViewModels"
              Title="Chris Evans" 
              BackgroundColor="{StaticResource BackgroundColor}">
-    
+
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
@@ -20,8 +20,8 @@
                Source="https://chrisevans9629.github.io/assets/images/profile_award.png" 
                VerticalOptions="Center" 
                HorizontalOptions="Center"
-               HeightRequest="200"
-               WidthRequest="200"
+               HeightRequest="150"
+               WidthRequest="150"
                x:Name="profileImage"
                />
             <Label Text="Chris Evans"
@@ -79,35 +79,41 @@
                 HeightRequest="1" 
                 BackgroundColor="{StaticResource TextColor}"/>
 
-            <StackLayout
-                Grid.Row="2">
-                <Grid RowDefinitions="*,*"
+            <CollectionView
+                Grid.Row="2"
+                ItemsSource="{Binding Feed.Items}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="*,*"
                     WidthRequest="150"
                     HeightRequest="150"
                     HorizontalOptions="Start"
-                    BackgroundColor="{StaticResource BackgroundColor}">
+                    BackgroundColor="{StaticResource BackgroundColor}"
+                              Margin="10">
 
-                    <Image
+                            <!--<Image
                         Grid.RowSpan="2"
                         VerticalOptions="Start"
                         Aspect="AspectFill"
-                        Source="https://chrisevans9629.github.io/assets/images/blender/ores.png"/>
-                    <BoxView
+                        Source="https://chrisevans9629.github.io/assets/images/blender/ores.png"/>-->
+                            <BoxView
                         Opacity="0.5"
                         Grid.Row="1"
                         BackgroundColor="{StaticResource BackgroundAccentColor}"/>
-                    <Label
-                        Margin="5"
-                        Grid.Row="1"
-                        Text="Blender and 3D Animation"/>
+                            <Label
+                                Margin="5"
+                                Grid.Row="1"
+                                Text="{Binding Title}"/>
 
 
-                </Grid>
-                
-            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
         </Grid>
-        
-        
+
+
         <!--<ScrollView Grid.Row="1" >
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
                 <Label Text="Start developing now" FontSize="Title"/>
@@ -127,7 +133,7 @@
                         />
             </StackLayout>
         </ScrollView>-->
-        
+
     </Grid>
 
 </ContentPage>
