@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IMyShow.Views.AboutPage"
              xmlns:vm="clr-namespace:IMyShow.ViewModels"
-             Title="{Binding Title}" 
+             Title="Chris Evans" 
              BackgroundColor="{StaticResource BackgroundColor}">
     
     <ContentPage.BindingContext>
@@ -11,7 +11,6 @@
     </ContentPage.BindingContext>
 
     <Grid RowDefinitions="Auto,*">
-
         <Image Aspect="AspectFill" Source="https://chrisevans9629.github.io/assets/images/header.png"/>
         <StackLayout 
             Margin="10"
@@ -36,21 +35,80 @@
                    Text="{Binding Prompts.CurrentText}"
                    />
 
-            <Button
-                ImageSource="https://chrisevans9629.github.io/assets/images/github.png"
-                Text="Follow @chrisevans9629"
-                Command="{Binding OpenWebCommand}"
-                CommandParameter="https://github.com/chrisevans9629"
-                />
-            
-            <ImageButton
-                WidthRequest="50"
-                HeightRequest="50"
-                Source=""/>
-        </StackLayout>
-        
 
-        <ScrollView Grid.Row="1" >
+            <Frame
+                HorizontalOptions="Center"
+                CornerRadius="10"
+                Padding="10"
+                BackgroundColor="{StaticResource BackgroundColor}">
+                <StackLayout Orientation="Horizontal">
+                    <Image
+                        WidthRequest="20"
+                        HeightRequest="20"
+                        Source="https://chrisevans9629.github.io/assets/images/github.png"/>
+                    <Label
+                        VerticalOptions="Center"
+                        Text="Follow @chrisevans9629"/>
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Command="{Binding OpenWebCommand}" 
+                        CommandParameter="https://github.com/chrisevans9629"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+        </StackLayout>
+        <BoxView VerticalOptions="Start" HeightRequest="1" BackgroundColor="{StaticResource TextColor}"/>
+
+        <Grid 
+            Grid.Row="1"
+            Margin="10"
+            Padding="10"
+            BackgroundColor="{StaticResource BackgroundAccentColor}"
+            RowDefinitions="Auto,1,Auto">
+            <Label Text="Projects"
+                   HorizontalOptions="Start" 
+                   VerticalOptions="Center"
+                   FontSize="Medium"/>
+            <Button Text="View All" 
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"/>
+            <BoxView 
+                Grid.Row="1"
+                VerticalOptions="End" 
+                HeightRequest="1" 
+                BackgroundColor="{StaticResource TextColor}"/>
+
+            <StackLayout
+                Grid.Row="2">
+                <Grid RowDefinitions="*,*"
+                    WidthRequest="150"
+                    HeightRequest="150"
+                    HorizontalOptions="Start"
+                    BackgroundColor="{StaticResource BackgroundColor}">
+
+                    <Image
+                        Grid.RowSpan="2"
+                        VerticalOptions="Start"
+                        Aspect="AspectFill"
+                        Source="https://chrisevans9629.github.io/assets/images/blender/ores.png"/>
+                    <BoxView
+                        Opacity="0.5"
+                        Grid.Row="1"
+                        BackgroundColor="{StaticResource BackgroundAccentColor}"/>
+                    <Label
+                        Margin="5"
+                        Grid.Row="1"
+                        Text="Blender and 3D Animation"/>
+
+
+                </Grid>
+                
+            </StackLayout>
+        </Grid>
+        
+        
+        <!--<ScrollView Grid.Row="1" >
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
                 <Label Text="Start developing now" FontSize="Title"/>
                 <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="0,0,0,0"/>
@@ -68,8 +126,8 @@
                         Command="{Binding OpenWebCommand}"
                         />
             </StackLayout>
-        </ScrollView>
-
+        </ScrollView>-->
+        
     </Grid>
 
 </ContentPage>

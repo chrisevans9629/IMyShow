@@ -11,6 +11,7 @@
             <Color x:Key="Accent">#e29236</Color>
             <Color x:Key="TextColor">#ffefc8</Color>
             <Color x:Key="BackgroundColor">#302f2f</Color>
+            <Color x:Key="BackgroundAccentColor">#323639</Color>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="{StaticResource TextColor}"></Setter>
                 <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}"/>
