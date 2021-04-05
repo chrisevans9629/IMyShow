@@ -11,7 +11,7 @@
     </ContentPage.BindingContext>
 
     <Grid RowDefinitions="Auto,*">
-        <Image Aspect="AspectFill" Source="https://chrisevans9629.github.io/assets/images/header.png"/>
+        <Image Aspect="AspectFill" HeightRequest="100" Source="https://chrisevans9629.github.io/assets/images/header.png"/>
         <StackLayout 
             Margin="10"
             
@@ -83,6 +83,7 @@
                 Grid.Row="2"
                 ItemsSource="{Binding Feed.Items}"
                 EmptyView="No blogs available"
+                x:Name="collection"
                 >
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout 
@@ -93,27 +94,46 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                                <Grid RowDefinitions="75,75" ColumnDefinitions="150"
-                                BackgroundColor="{StaticResource BackgroundColor}"
-                              >
+                        <ContentView>
+                            <ContentView.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={Reference collection}, Path=BindingContext.OpenWebCommand}" CommandParameter="{Binding Url}"/>
+                            </ContentView.GestureRecognizers>
+                            <Grid RowDefinitions="*,2*" 
+                              ColumnDefinitions="150,*"
+                              HeightRequest="150" 
+                              VerticalOptions="Start"
+                              BackgroundColor="{StaticResource BackgroundColor}" >
 
-                                    <Image
-                        Grid.RowSpan="2"
-                        VerticalOptions="Start"
-                        Aspect="AspectFit"
-                        Source="{Binding ImageUrl}"/>
-                                    <BoxView
-                        Opacity="0.5"
-                        Grid.Row="1"
-                        BackgroundColor="{StaticResource BackgroundAccentColor}"/>
-                                    <Label
-                                Margin="5"
+                                
+
+                                <Image
+                                    Grid.RowSpan="2"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Aspect="AspectFit"
+                                    Source="{Binding ImageUrl}"/>
+                                <!--<BoxView
+                                Opacity="0.5"
                                 Grid.Row="1"
-                                Text="{Binding Title}"
-                                 VerticalOptions="End"/>
+                                BackgroundColor="{StaticResource BackgroundAccentColor}"/>-->
+                                <Label
+                                    Margin="5"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="{Binding Title}"
+                                    FontSize="Small"
+                                    LineBreakMode="TailTruncation"
+                                        VerticalOptions="End"
+                                    />
 
+                                <Label Text="{Binding Date, StringFormat='{0:MMMM d, yyyy}'}" Grid.Column="1" HorizontalOptions="End" FontSize="Caption" Margin="5"/>
 
-                                </Grid>
+                                <BoxView BackgroundColor="{StaticResource TextColor}" Grid.Column="1" HeightRequest="1" VerticalOptions="End" Margin="0,1,10,0"/>
+
+                                <Label Margin="10" Grid.Column="1" Grid.Row="1"  Text="{Binding Summary}" MaxLines="3" LineBreakMode="TailTruncation"/>
+                            </Grid>
+
+                        </ContentView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
