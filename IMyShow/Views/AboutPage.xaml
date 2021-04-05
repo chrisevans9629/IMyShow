@@ -86,11 +86,16 @@
                 x:Name="collection"
                 >
                 <CollectionView.ItemsLayout>
-                    <GridItemsLayout 
+                    <GridItemsLayout x:Name="layout"
                         HorizontalItemSpacing="10"
                         VerticalItemSpacing="10"
                         Orientation="Vertical"
-                        Span="2" />
+                         >
+
+                        <GridItemsLayout.Span>
+                            <OnIdiom x:TypeArguments="x:Int32" Desktop="2" Phone="1" Default="1"/>
+                        </GridItemsLayout.Span>
+                    </GridItemsLayout>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

@@ -15,6 +15,7 @@ namespace IMyShow.Views
             InitializeComponent();
             profileImage.Opacity = 0;
 
+            
 
         }
 
