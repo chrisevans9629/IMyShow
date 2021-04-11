@@ -26,5 +26,17 @@ namespace IMyShow.Views
 
             profileImage.FadeTo(1, 2000);
         }
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            if (width > height)
+            {
+                layout.Span = 2;
+            }
+            else
+            {
+                layout.Span = 1;
+            }
+            base.OnSizeAllocated(width, height);
+        }
     }
 }

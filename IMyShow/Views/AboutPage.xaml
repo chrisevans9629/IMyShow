@@ -106,11 +106,8 @@
                         HorizontalItemSpacing="10"
                         VerticalItemSpacing="10"
                         Orientation="Vertical"
-                         >
+                        >
 
-                    <GridItemsLayout.Span>
-                        <OnIdiom x:TypeArguments="x:Int32" Desktop="1" Phone="1" Default="1"/>
-                    </GridItemsLayout.Span>
                 </GridItemsLayout>
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
