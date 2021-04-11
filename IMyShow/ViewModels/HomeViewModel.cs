@@ -18,15 +18,13 @@ namespace IMyShow.ViewModels
         public HomeViewModel()
         {
             Title = "About";
-            OpenWebCommand = new Command(async a => await Browser.OpenAsync(a.ToString()));
-            Load();
             RefreshCommand = new Command(Load);
             ViewAllCommand = new Command(ViewAll);
         }
 
         private async void ViewAll()
         {
-            await Shell.Current.GoToAsync(nameof(BlogsPage));
+            await Shell.Current.GoToAsync("//" + nameof(BlogsPage));
         }
 
         async void Load()
@@ -51,7 +49,11 @@ namespace IMyShow.ViewModels
         public ICommand ViewAllCommand { get; set; }
 
         public Prompts Prompts { get; set; } = new Prompts();
-        public ICommand OpenWebCommand { get; }
-        public RssFeed Feed { get; set; } = new RssFeed();
+        public RssFeed Feed { get; set; } = RssFeed.Current;
+        public override void OnAppearing()
+        {
+            Load();
+            base.OnAppearing();
+        }
     }
 }

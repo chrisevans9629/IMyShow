@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IMyShow.ViewModels;
+using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Timers;
@@ -15,11 +16,15 @@ namespace IMyShow.Views
             InitializeComponent();
         }
 
+        
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            ((BaseViewModel)this.BindingContext).OnAppearing();
+
             this.Opacity = 0;
-            this.FadeTo(1, 2000);
+            this.FadeTo(1, 500);
 
         }
         protected override void OnSizeAllocated(double width, double height)
@@ -33,6 +38,16 @@ namespace IMyShow.Views
                 layout.Span = 1;
             }
             base.OnSizeAllocated(width, height);
+        }
+
+        private void collection_ScrollToRequested(object sender, ScrollToRequestEventArgs e)
+        {
+            
+        }
+
+        private void collection_Scrolled(object sender, ItemsViewScrolledEventArgs e)
+        {
+            Console.WriteLine(e.VerticalOffset);
         }
     }
 }

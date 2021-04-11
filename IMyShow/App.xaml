@@ -43,6 +43,47 @@
                 <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
                 <Setter Property="LineBreakMode" Value="WordWrap"/>
             </Style>
+
+            <DataTemplate x:Key="BlogSummary">
+                <ContentView>
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={Type CollectionView}}, Path=BindingContext.OpenWebCommand}" CommandParameter="{Binding Url}"/>
+                    </ContentView.GestureRecognizers>
+                    <Grid RowDefinitions="*,2*" 
+                              ColumnDefinitions="150,*"
+                              HeightRequest="150" 
+                              VerticalOptions="Start"
+                              BackgroundColor="{StaticResource BackgroundAccentColor}" >
+
+
+
+                        <Image Margin="5,0,0,0"
+                                    Grid.RowSpan="2"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Aspect="AspectFit"
+                                    Source="{Binding ImageUrl}"/>
+
+                        <Label
+                                    Margin="5"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="{Binding Title}"
+                                    FontSize="Small"
+                                    LineBreakMode="TailTruncation"
+                                        VerticalOptions="End"
+                                    />
+
+                        <Label Text="{Binding Date, StringFormat='{0:MMMM d, yyyy}'}" Grid.Column="1" HorizontalOptions="End" FontSize="Caption" Margin="5"/>
+
+                        <BoxView BackgroundColor="{StaticResource TextColor}" Grid.Column="1" HeightRequest="1" VerticalOptions="End" Margin="0,1,10,0"/>
+
+                        <Label Margin="10" Grid.Column="1" Grid.Row="1"  Text="{Binding Summary}" MaxLines="3" LineBreakMode="TailTruncation"/>
+                    </Grid>
+
+                </ContentView>
+            </DataTemplate>
+
         </ResourceDictionary>        
     </Application.Resources>
 </Application>

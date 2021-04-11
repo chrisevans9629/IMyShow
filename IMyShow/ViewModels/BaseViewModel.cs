@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace IMyShow.ViewModels
@@ -37,6 +39,13 @@ namespace IMyShow.ViewModels
     }
     public class BaseViewModel : Bindable
     {
+        public BaseViewModel()
+        {
+            OpenWebCommand = new Command(async a => await Browser.OpenAsync(a.ToString()));
+            NavigateCommand = new Command(async a => await Shell.Current.GoToAsync(a.ToString(), true));
+        }
+        public ICommand OpenWebCommand { get; }
+        public ICommand NavigateCommand { get; }
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
         bool isBusy = false;
@@ -53,6 +62,10 @@ namespace IMyShow.ViewModels
             set { SetProperty(ref title, value); }
         }
 
+        public virtual void OnAppearing()
+        {
+
+        }
         
     }
 }
