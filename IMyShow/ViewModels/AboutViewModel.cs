@@ -15,6 +15,7 @@ namespace IMyShow.ViewModels
             Title = "About";
             OpenWebCommand = new Command(async a => await Browser.OpenAsync(a.ToString()));
             Load();
+            RefreshCommand = new Command(Load);
         }
 
         async void Load()
@@ -33,6 +34,9 @@ namespace IMyShow.ViewModels
                 IsBusy = false;
             }
         }
+
+        public ICommand RefreshCommand { get; set; }
+
         public Prompts Prompts { get; set; } = new Prompts();
         public ICommand OpenWebCommand { get; }
         public RssFeed Feed { get; set; } = new RssFeed();
