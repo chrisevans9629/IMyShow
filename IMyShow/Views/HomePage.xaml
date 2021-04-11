@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IMyShow.Views.HomePage"
+             xmlns:vm="clr-namespace:IMyShow.ViewModels"
+             Title="Chris Evans" 
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <Grid x:Key="header">
+            <Image Aspect="AspectFill" HeightRequest="100" Source="https://chrisevans9629.github.io/assets/images/header.png"/>
+            <StackLayout 
+            Margin="10"
+            
+            >
+                <Image     
+               Source="https://chrisevans9629.github.io/assets/images/profile_award.png" 
+               VerticalOptions="Center" 
+               HorizontalOptions="Center"
+               HeightRequest="150"
+                IsOpaque="True"
+               WidthRequest="150"
+               x:Name="profileImage"
+               />
+                <Label Text="Chris Evans"
+                   FontSize="Large"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center"/>
+                <Label Text="Full stack developer, gamer, and more"
+                   FontSize="Medium"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   />
+                <Label x:Name="captionLabel" 
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Text="{Binding Prompts.CurrentText}"
+                   />
+
+
+                <Frame
+                HorizontalOptions="Center"
+                CornerRadius="10"
+                Padding="10"
+                BackgroundColor="{StaticResource BackgroundColor}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                        WidthRequest="20"
+                        HeightRequest="20"
+                        Source="https://chrisevans9629.github.io/assets/images/github.png"/>
+                        <Label
+                        VerticalOptions="Center"
+                        Text="Follow @chrisevans9629"/>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer 
+                        Command="{Binding OpenWebCommand}" 
+                        CommandParameter="https://github.com/chrisevans9629"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+            </StackLayout>
+            <BoxView VerticalOptions="Start" HeightRequest="1" BackgroundColor="{StaticResource TextColor}"/>
+
+        </Grid>
+    </ContentPage.Resources>
+
+
+    <!--<Grid 
+            Grid.Row="1"
+            Margin="10"
+            Padding="10"
+            BackgroundColor="{StaticResource BackgroundAccentColor}"
+            RowDefinitions="Auto,1,Auto">-->
+    <!--<Label Text="Projects"
+                   HorizontalOptions="Start" 
+                   VerticalOptions="Center"
+                   FontSize="Medium"/>
+        <Button Text="View All" 
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"/>
+        <BoxView 
+                Grid.Row="1"
+                VerticalOptions="End" 
+                HeightRequest="1" 
+                BackgroundColor="{StaticResource TextColor}"/>-->
+    <RefreshView IsRefreshing="{Binding IsBusy}" Command="{Binding RefreshCommand}">
+        <CollectionView
+                Grid.Row="2"
+                ItemsSource="{Binding TopItems}"
+                EmptyView="No blogs available"
+                x:Name="collection"
+                
+                >
+
+            <CollectionView.Header>
+                <ContentView Content="{StaticResource header}"/>
+            </CollectionView.Header>
+
+            <CollectionView.Footer>
+                <Button Text="View All" 
+                    HorizontalOptions="End"
+                    VerticalOptions="Center" Command="{Binding ViewAllCommand}"/>
+            </CollectionView.Footer>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout x:Name="layout"
+                        HorizontalItemSpacing="10"
+                        VerticalItemSpacing="10"
+                        Orientation="Vertical"
+                        >
+
+                </GridItemsLayout>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView>
+                        <ContentView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={Reference collection}, Path=BindingContext.OpenWebCommand}" CommandParameter="{Binding Url}"/>
+                        </ContentView.GestureRecognizers>
+                        <Grid RowDefinitions="*,2*" 
+                              ColumnDefinitions="150,*"
+                              HeightRequest="150" 
+                              VerticalOptions="Start"
+                              BackgroundColor="{StaticResource BackgroundAccentColor}" >
+
+
+
+                            <Image Margin="5,0,0,0"
+                                    Grid.RowSpan="2"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Aspect="AspectFit"
+                                    Source="{Binding ImageUrl}"/>
+                            <!--<BoxView
+                                Opacity="0.5"
+                                Grid.Row="1"
+                                BackgroundColor="{StaticResource BackgroundAccentColor}"/>-->
+                            <Label
+                                    Margin="5"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="{Binding Title}"
+                                    FontSize="Small"
+                                    LineBreakMode="TailTruncation"
+                                        VerticalOptions="End"
+                                    />
+
+                            <Label Text="{Binding Date, StringFormat='{0:MMMM d, yyyy}'}" Grid.Column="1" HorizontalOptions="End" FontSize="Caption" Margin="5"/>
+
+                            <BoxView BackgroundColor="{StaticResource TextColor}" Grid.Column="1" HeightRequest="1" VerticalOptions="End" Margin="0,1,10,0"/>
+
+                            <Label Margin="10" Grid.Column="1" Grid.Row="1"  Text="{Binding Summary}" MaxLines="3" LineBreakMode="TailTruncation"/>
+                        </Grid>
+
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </RefreshView>
+
+    <!--</Grid>-->
+
+
+</ContentPage>

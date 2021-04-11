@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace IMyShow.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AboutPage : ContentPage
+    public partial class BlogsPage : ContentPage
     {
-        public AboutPage()
+        public BlogsPage()
         {
             InitializeComponent();
         }
