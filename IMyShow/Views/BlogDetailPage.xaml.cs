@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IMyShow.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,13 @@ namespace IMyShow.Views
         public BlogDetailPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            
+            ((BaseViewModel)this.BindingContext).OnAppearing();
+            base.OnAppearing();
         }
     }
 }
