@@ -1,4 +1,5 @@
-﻿using IMyShow.ViewModels;
+﻿using IMyShow.Themes;
+using IMyShow.ViewModels;
 using IMyShow.Views;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,24 @@ namespace IMyShow
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
         }
 
+        private void Dark_Clicked(object sender, EventArgs e)
+        {
+            ChangeTheme(new DarkTheme());
+        }
+
+        private void Light_Clicked(object sender, EventArgs e)
+        {
+            ChangeTheme(new LightTheme());
+        }
+
+        void ChangeTheme(ResourceDictionary dict)
+        {
+            var themes = Application.Current.Resources.MergedDictionaries;
+            if (themes != null)
+            {
+                themes.Clear();
+                themes.Add(dict);
+            }
+        }
     }
 }

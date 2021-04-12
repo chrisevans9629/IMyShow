@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:IMyShow.ViewModels"
-             Background="{StaticResource BackgroundColor}"
+             Title="Blogs"
+             
              x:Class="IMyShow.Views.BlogsPage">
     <ContentPage.BindingContext>
         <vm:BlogsViewModel />

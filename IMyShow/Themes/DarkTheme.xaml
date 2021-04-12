@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="IMyShow.Themes.DarkTheme">
+    <Color x:Key="Primary">#302f2f</Color>
+    <Color x:Key="Accent">#e29236</Color>
+    <Color x:Key="TextColor">#ffefc8</Color>
+    <Color x:Key="OverlayTextColor">#ffefc8</Color>
+    <Color x:Key="BackgroundColor">#302f2f</Color>
+    <Color x:Key="BackgroundAccentColor">#323639</Color>
+</ResourceDictionary>

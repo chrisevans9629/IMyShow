@@ -6,23 +6,28 @@
         Define global resources and styles here, that apply to all pages in your app.
     -->
     <Application.Resources>
+       
+
         <ResourceDictionary>
-            <Color x:Key="Primary">#302f2f</Color>
-            <Color x:Key="Accent">#e29236</Color>
-            <Color x:Key="TextColor">#ffefc8</Color>
-            <Color x:Key="BackgroundColor">#302f2f</Color>
-            <Color x:Key="BackgroundAccentColor">#323639</Color>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/DarkTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+
             <Style TargetType="Button">
                 <Setter Property="FontFamily" Value="Cascadia Code"/>
-                <Setter Property="TextColor" Value="{StaticResource TextColor}"></Setter>
-                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}"/>
-                <Setter Property="BorderColor" Value="{StaticResource Accent}"/>
+                <Setter Property="TextColor" Value="{DynamicResource TextColor}"></Setter>
+                <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}"/>
+                <Setter Property="BorderColor" Value="{DynamicResource Accent}"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Disabled">
@@ -34,13 +39,24 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
-            <Style TargetType="ContentPage">
-                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}"/>
+
+            <Style TargetType="Label" x:Key="OverlayLabel">
+                <Setter Property="TextColor" Value="{DynamicResource OverlayTextColor}"/>
+            </Style>
+            
+            <Style TargetType="BoxView" x:Key="Break">
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="HeightRequest" Value="1"/>
+                <Setter Property="BackgroundColor" Value="{DynamicResource TextColor}"/>
+            </Style>
+
+            <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}"/>
             </Style>
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="Cascadia Code"/>
 
-                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                <Setter Property="TextColor" Value="{DynamicResource TextColor}"/>
                 <Setter Property="LineBreakMode" Value="WordWrap"/>
             </Style>
 
@@ -53,7 +69,7 @@
                               ColumnDefinitions="150,*"
                               HeightRequest="150" 
                               VerticalOptions="Start"
-                              BackgroundColor="{StaticResource BackgroundAccentColor}" >
+                              BackgroundColor="{DynamicResource BackgroundAccentColor}" >
 
 
 
@@ -76,7 +92,7 @@
 
                         <Label Text="{Binding Date, StringFormat='{0:MMMM d, yyyy}'}" Grid.Column="1" HorizontalOptions="End" FontSize="Caption" Margin="5"/>
 
-                        <BoxView BackgroundColor="{StaticResource TextColor}" Grid.Column="1" HeightRequest="1" VerticalOptions="End" Margin="0,1,10,0"/>
+                        <BoxView BackgroundColor="{DynamicResource TextColor}" Grid.Column="1" HeightRequest="1" VerticalOptions="End" Margin="0,1,10,0"/>
 
                         <Label Margin="10" Grid.Column="1" Grid.Row="1"  Text="{Binding Summary}" MaxLines="3" LineBreakMode="TailTruncation"/>
                     </Grid>

@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IMyShow.Views.HomePage"
              xmlns:vm="clr-namespace:IMyShow.ViewModels"
-             Title="Chris Evans" 
-             BackgroundColor="{StaticResource BackgroundColor}">
+             Title="Chris Evans" >
 
     <ContentPage.BindingContext>
         <vm:HomeViewModel />
@@ -25,24 +24,25 @@
                 <Label Text="Chris Evans"
                    FontSize="Large"
                    HorizontalTextAlignment="Center"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center"
+                   Style="{StaticResource OverlayLabel}"/>
                 <Label Text="Full stack developer, gamer, and more"
                    FontSize="Medium"
                    HorizontalOptions="Center"
                    HorizontalTextAlignment="Center"
-                   />
+                   Style="{StaticResource OverlayLabel}" />
                 <Label x:Name="captionLabel" 
                    HorizontalOptions="Center"
                    HorizontalTextAlignment="Center"
                    Text="{Binding Prompts.CurrentText}"
-                   />
+                   Style="{StaticResource OverlayLabel}" />
 
 
                 <Frame
-                HorizontalOptions="Center"
-                CornerRadius="10"
-                Padding="10"
-                BackgroundColor="{StaticResource BackgroundColor}">
+                    HorizontalOptions="Center"
+                    CornerRadius="10"
+                    Padding="10"
+                    BackgroundColor="{DynamicResource BackgroundColor}">
                     <StackLayout Orientation="Horizontal">
                         <Image
                         WidthRequest="20"
@@ -60,7 +60,7 @@
                 </Frame>
 
             </StackLayout>
-            <BoxView VerticalOptions="Start" HeightRequest="1" BackgroundColor="{StaticResource TextColor}"/>
+            <BoxView Style="{StaticResource Break}" />
 
         </Grid>
     </ContentPage.Resources>
