@@ -21,17 +21,28 @@
                 <Setter Property="Shell.ForegroundColor" Value="{DynamicResource TextColor}" />
                 <Setter Property="Shell.TitleColor" Value="{DynamicResource TextColor}" />
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
-                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="Blue" />
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource Primary}" />
                 <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource TextColor}"/>
                 <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource TextColor}"/>
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
-            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" >
+                
+            </Style>
         </ResourceDictionary>
     </Shell.Resources>
 
+
+    <Shell.FlyoutHeader>
+        <Grid HeightRequest="100">
+            <Image Source="https://chrisevans9629.github.io/assets/images/kcfed.png" Aspect="AspectFill"/>
+            <BoxView BackgroundColor="#000000" Opacity="0.5"/>
+            <Label Text="Chris Evans" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" Style="{StaticResource OverlayLabel}"/>
+        </Grid>
+    </Shell.FlyoutHeader>
+    
     <FlyoutItem Title="Home" 
                 FlyoutDisplayOptions="AsMultipleItems"
                 Icon="icon_about.png">

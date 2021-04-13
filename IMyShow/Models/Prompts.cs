@@ -30,10 +30,12 @@ namespace IMyShow.ViewModels
 
         private async void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
+            var str = CurrentText;
+
             var prompt = TextPrompts[PromptIndex];
-            if(State == PromptState.Adding)
+            if (State == PromptState.Adding)
             {
-                CurrentText += TextPrompts[PromptIndex][TextIndex];
+                str += TextPrompts[PromptIndex][TextIndex];
                 TextIndex++;
 
                 if (TextIndex >= prompt.Length)
@@ -46,9 +48,9 @@ namespace IMyShow.ViewModels
             }
             else
             {
-                CurrentText = CurrentText.Remove(CurrentText.Length - 1, 1);
+                str = str.Remove(str.Length - 1, 1);
 
-                if(CurrentText.Length <= 0)
+                if (str.Length <= 0)
                 {
                     TextIndex = 0;
                     PromptIndex++;
@@ -56,13 +58,13 @@ namespace IMyShow.ViewModels
                     {
                         PromptIndex = 0;
                     }
-                    
+
 
                     State = PromptState.Adding;
                 }
             }
 
-            
+            CurrentText = str;
         }
         private PromptState State;
         public int PromptIndex { get; set; }
