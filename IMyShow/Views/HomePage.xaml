@@ -14,12 +14,14 @@
             <Image Aspect="AspectFill" HeightRequest="100" Source="https://chrisevans9629.github.io/assets/images/header.png"/>
             <StackLayout   Margin="10" >
                 <Image     
+                    x:Name="profileImg"
                        Source="https://chrisevans9629.github.io/assets/images/profile_award.png" 
                        VerticalOptions="Center" 
                        HorizontalOptions="Center"
                        HeightRequest="150"
                         IsOpaque="True"
                        WidthRequest="150"
+                        TranslationY="-100"
                        />
                 <Label Text="Chris Evans"
                    FontSize="Large"

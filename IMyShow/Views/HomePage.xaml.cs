@@ -25,6 +25,8 @@ namespace IMyShow.Views
 
             this.Opacity = 0;
             this.FadeTo(1, 500);
+            profileImg.TranslationY = -200;
+            profileImg.TranslateTo(0, 0, 1000, Easing.SinInOut);
 
         }
         protected override void OnSizeAllocated(double width, double height)

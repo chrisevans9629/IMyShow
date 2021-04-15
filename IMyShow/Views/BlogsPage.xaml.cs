@@ -18,9 +18,24 @@ namespace IMyShow.Views
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             ((BaseViewModel)this.BindingContext).OnAppearing();
+
+            var children = blogsList.Children.Take(10).ToList();
+
+            foreach (var item in children)
+            {
+                item.TranslationX = item.Width;
+                item.Opacity = 0;
+            }
+            var time = 500u;
+            foreach (var item in children)
+            {
+                item.FadeTo(1, time, Easing.SinIn);
+                await item.TranslateTo(0, 0, time, Easing.SinIn);
+            }
+
             base.OnAppearing();
         }
     }

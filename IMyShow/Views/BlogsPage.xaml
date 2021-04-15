@@ -9,10 +9,25 @@
         <vm:BlogsViewModel />
     </ContentPage.BindingContext>
 
-    <CollectionView
+    <ScrollView>
+        <StackLayout 
+        BindableLayout.EmptyView="No blogs available" 
+        BindableLayout.ItemsSource="{Binding Feed.Items}" 
+        BindableLayout.ItemTemplate="{StaticResource BlogSummary}"
+        
+        x:Name="blogsList"/>
+    </ScrollView>
+    
+
+
+
+    <!--<CollectionView
             ItemsSource="{Binding Feed.Items}"
             EmptyView="No blogs available"
-            ItemTemplate="{StaticResource BlogSummary}">
+            ItemTemplate="{StaticResource BlogSummary}"
+            x:Name="blogsList"
+        ChildAdded="blogsList_ChildAdded"
+            >
 
         <CollectionView.ItemsLayout>
             <GridItemsLayout x:Name="layout"
@@ -23,6 +38,6 @@
 
             </GridItemsLayout>
         </CollectionView.ItemsLayout>
-    </CollectionView>
+    </CollectionView>-->
     
 </ContentPage>

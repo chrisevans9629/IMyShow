@@ -1,5 +1,4 @@
-﻿using IMyShow.Services;
-using IMyShow.Views;
+﻿using IMyShow.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,7 +12,6 @@ namespace IMyShow
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 

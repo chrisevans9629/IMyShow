@@ -63,7 +63,7 @@
             <DataTemplate x:Key="BlogSummary">
                 <ContentView>
                     <ContentView.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={Type CollectionView}}, Path=BindingContext.DetailPageCommand}" CommandParameter="{Binding Url}"/>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={Type ContentPage}}, Path=BindingContext.DetailPageCommand}" CommandParameter="{Binding Url}"/>
                     </ContentView.GestureRecognizers>
                     <Grid RowDefinitions="*,2*" 
                               ColumnDefinitions="75,*"

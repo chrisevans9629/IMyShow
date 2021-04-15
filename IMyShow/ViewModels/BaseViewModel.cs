@@ -1,6 +1,4 @@
-﻿using IMyShow.Models;
-using IMyShow.Services;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -17,7 +15,6 @@ namespace IMyShow.ViewModels
         public ICommand DetailPageCommand { get; }
         public ICommand OpenWebCommand { get; }
         public ICommand NavigateCommand { get; }
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
         bool isBusy = false;
         public bool IsBusy
