@@ -29,6 +29,13 @@ namespace IMyShow.Views
             profileImg.TranslateTo(0, 0, 1000, Easing.SinInOut);
 
         }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            ((BaseViewModel)this.BindingContext).OnDisappearing();
+        }
+
         protected override void OnSizeAllocated(double width, double height)
         {
             if (width > height)

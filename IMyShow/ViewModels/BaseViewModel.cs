@@ -34,6 +34,11 @@ namespace IMyShow.ViewModels
         {
 
         }
+
+        public virtual void OnDisappearing()
+        {
+
+        }
         
     }
 }

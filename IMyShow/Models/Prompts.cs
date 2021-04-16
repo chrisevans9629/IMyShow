@@ -25,8 +25,18 @@ namespace IMyShow.ViewModels
             timer.Interval = 50;
             timer.Start();
 
+        }
+
+        public void Stop()
+        {
+            timer.Elapsed -= Timer_Elapsed;
+        }
+
+        public void Start()
+        {
             timer.Elapsed += Timer_Elapsed;
         }
+
 
         private async void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {

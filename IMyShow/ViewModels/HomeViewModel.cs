@@ -54,6 +54,13 @@ namespace IMyShow.ViewModels
         {
             Load();
             base.OnAppearing();
+            Prompts.Start();
+        }
+
+        public override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            Prompts.Stop();
         }
     }
 }
